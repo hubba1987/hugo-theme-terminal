@@ -27,7 +27,10 @@
       {{ end }}
     </span>
   {{ end }}
-  {{ partial "cover.html" . }}
+  
+  {{ if not (.Params.coverHiddenOnSingle | default .Site.Params.coverHiddenOnSingle) }}
+    {{ partial "cover.html" . }}
+  {{ end }}
 
   {{ if (.Params.Toc | default .Site.Params.Toc) }}
     <div class="table-of-contents">
